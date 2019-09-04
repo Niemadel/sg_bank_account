@@ -2,9 +2,13 @@ package com.bankaccountkata;
 
 public class Amount {
 
-    public double money;
+    private double money;
 
     public Amount(double money) {
         this.money = money;
+    }
+
+    public Amount add(Amount amountDeposited) {
+        return new Amount(money + amountDeposited.money);
     }
 }
