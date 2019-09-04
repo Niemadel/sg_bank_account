@@ -2,7 +2,14 @@ package com.bankaccountkata;
 
 public class Account {
 
-    public void deposit(Amount amount) {
+    private HistoryAccount historyAccount;
+
+    public Account(HistoryAccount historyAccount) {
+        this.historyAccount = historyAccount;
+    }
+
+    public Amount deposit(Amount amount) {
+        return amount;
 
     }
 

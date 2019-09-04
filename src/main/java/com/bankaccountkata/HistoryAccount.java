@@ -2,7 +2,10 @@ package com.bankaccountkata;
 
 public class HistoryAccount {
 
-    public void statement(Amount amount) {
+    private Operation operation;
 
+    public HistoryAccount(Operation operation) {
+        this.operation = operation;
     }
+
 }
