@@ -20,4 +20,16 @@ public class AccountTest {
         assertThat(account.balance).isEqualTo(expectedBalance);
     }
 
+    @Test
+    void withdrawal_of_100_on_account_substract_100_on_account() {
+        Amount expectedBalance = Amount.of(new BigDecimal(100));
+        Amount accountBalance = Amount.of(new BigDecimal(200));
+        Account account = new Account(accountBalance);
+        Amount withdrawalAmount = Amount.of(new BigDecimal(100));
+
+        account.withdrawal(withdrawalAmount);
+
+        assertThat(account.balance).isEqualTo(expectedBalance);
+    }
+
 }

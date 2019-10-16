@@ -20,6 +20,10 @@ public class Amount {
         return new Amount(money.add(amountDeposited.money));
     }
 
+    public Amount substract(Amount withdrawalAmount) {
+        return new Amount(money.subtract(withdrawalAmount.money));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,4 +43,5 @@ public class Amount {
                 "money=" + money +
                 '}';
     }
+
 }

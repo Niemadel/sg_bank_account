@@ -11,4 +11,8 @@ public class Account {
     public void deposit(Amount amountDeposit) {
         balance = balance.add(amountDeposit);
     }
+
+    public void withdrawal(Amount withdrawalAmount) {
+        balance = balance.substract(withdrawalAmount);
+    }
 }
