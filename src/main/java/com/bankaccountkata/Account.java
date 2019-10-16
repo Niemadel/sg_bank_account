@@ -9,6 +9,6 @@ public class Account {
     }
 
     public void deposit(Amount amountDeposit) {
-        balance.add(amountDeposit);
+        balance = balance.add(amountDeposit);
     }
 }
