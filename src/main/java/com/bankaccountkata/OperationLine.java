@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class OperationLine {
 
-    private String operationType;
+    private OperationType operationType;
     private Amount balance;
     private Amount deposit;
 
-    public OperationLine(String operationType, Amount balance, Amount deposit) {
+    public OperationLine(OperationType operationType, Amount balance, Amount deposit) {
         this.operationType = operationType;
         this.balance = balance;
         this.deposit = deposit;

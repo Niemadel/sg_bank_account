@@ -69,7 +69,7 @@ public class AccountTest {
         Account account = new Account(accountBalance, accountStatement);
         Amount depositAmount = Amount.of(new BigDecimal(100));
 
-        OperationLine expectedOperationLine = new OperationLine("deposit", expectedBalance, depositAmount);
+        OperationLine expectedOperationLine = new OperationLine(OperationType.DEPOSIT, expectedBalance, depositAmount);
         AccountStatement expectedStatement = new AccountStatement(new ArrayList<>());
         expectedStatement.add(expectedOperationLine);
 
@@ -86,7 +86,7 @@ public class AccountTest {
         Account account = new Account(accountBalance, accountStatement);
         Amount withdrawalAmount = Amount.of(new BigDecimal(100));
 
-        OperationLine expectedOperationLine = new OperationLine("withdrawal", expectedBalance, withdrawalAmount);
+        OperationLine expectedOperationLine = new OperationLine(OperationType.WITHDRAWAL, expectedBalance, withdrawalAmount);
         AccountStatement expectedStatement = new AccountStatement(new ArrayList<>());
         expectedStatement.add(expectedOperationLine);
 
