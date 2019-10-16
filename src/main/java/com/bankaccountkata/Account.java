@@ -1,5 +1,7 @@
 package com.bankaccountkata;
 
+import java.time.LocalDateTime;
+
 public class Account {
 
     public Amount balance;
@@ -10,14 +12,14 @@ public class Account {
         this.accountStatement = accountStatement;
     }
 
-    public void deposit(Amount amountDeposit) {
+    public void deposit(Amount amountDeposit, LocalDateTime operationDate) {
         balance = balance.add(amountDeposit);
-        accountStatement.add(new OperationLine(OperationType.DEPOSIT, balance, amountDeposit));
+        accountStatement.add(new OperationLine(OperationType.DEPOSIT, balance, amountDeposit, operationDate));
     }
 
-    public void withdrawal(Amount withdrawalAmount) {
+    public void withdrawal(Amount withdrawalAmount, LocalDateTime operationDate) {
         balance = balance.substract(withdrawalAmount);
-        accountStatement.add(new OperationLine(OperationType.WITHDRAWAL, balance, withdrawalAmount));
+        accountStatement.add(new OperationLine(OperationType.WITHDRAWAL, balance, withdrawalAmount, operationDate));
     }
 
 }

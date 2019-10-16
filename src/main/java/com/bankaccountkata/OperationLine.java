@@ -1,17 +1,20 @@
 package com.bankaccountkata;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class OperationLine {
 
     private OperationType operationType;
     private Amount balance;
-    private Amount deposit;
+    private Amount operationAmount;
+    private LocalDateTime operationDate;
 
-    public OperationLine(OperationType operationType, Amount balance, Amount deposit) {
+    public OperationLine(OperationType operationType, Amount balance, Amount operationAmount, LocalDateTime operationDate) {
         this.operationType = operationType;
         this.balance = balance;
-        this.deposit = deposit;
+        this.operationAmount = operationAmount;
+        this.operationDate = operationDate;
     }
 
     @Override
@@ -19,22 +22,14 @@ public class OperationLine {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OperationLine that = (OperationLine) o;
-        return Objects.equals(operationType, that.operationType) &&
+        return operationType == that.operationType &&
                 Objects.equals(balance, that.balance) &&
-                Objects.equals(deposit, that.deposit);
+                Objects.equals(operationAmount, that.operationAmount) &&
+                Objects.equals(operationDate, that.operationDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(operationType, balance, deposit);
-    }
-
-    @Override
-    public String toString() {
-        return "OperationLine{" +
-                "operationType='" + operationType + '\'' +
-                ", balance=" + balance +
-                ", deposit=" + deposit +
-                '}';
+        return Objects.hash(operationType, balance, operationAmount, operationDate);
     }
 }
