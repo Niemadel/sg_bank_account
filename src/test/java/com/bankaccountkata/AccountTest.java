@@ -78,4 +78,21 @@ public class AccountTest {
         assertThat(account.accountStatement).isEqualTo(expectedStatement);
     }
 
+    @Test
+    void print_statement_with_balance_withdrawal_amount_and_operation_type_after_withdrawal() {
+        Amount accountBalance = Amount.of(new BigDecimal(200));
+        Amount expectedBalance = Amount.of(new BigDecimal(100));
+        AccountStatement accountStatement = new AccountStatement(new ArrayList<>());
+        Account account = new Account(accountBalance, accountStatement);
+        Amount withdrawalAmount = Amount.of(new BigDecimal(100));
+
+        OperationLine expectedOperationLine = new OperationLine("withdrawal", expectedBalance, withdrawalAmount);
+        AccountStatement expectedStatement = new AccountStatement(new ArrayList<>());
+        expectedStatement.add(expectedOperationLine);
+
+        account.withdrawal(withdrawalAmount);
+
+        assertThat(account.accountStatement).isEqualTo(expectedStatement);
+    }
+
 }

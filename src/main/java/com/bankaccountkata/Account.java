@@ -17,6 +17,7 @@ public class Account {
 
     public void withdrawal(Amount withdrawalAmount) {
         balance = balance.substract(withdrawalAmount);
+        accountStatement.add(new OperationLine("withdrawal", balance, withdrawalAmount));
     }
 
 }
