@@ -65,7 +65,7 @@ public class AccountTest {
     }
 
     @Test
-    void print_statement_with_balance_and_deposit_amount_and_operation_type_after_deposit() {
+    void return_statement_with_balance_and_deposit_amount_and_operation_type_after_deposit() {
         Amount accountBalance = Amount.of(new BigDecimal(0));
         Amount expectedBalance = Amount.of(new BigDecimal(100));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
@@ -83,7 +83,7 @@ public class AccountTest {
     }
 
     @Test
-    void print_statement_with_balance_and_withdrawal_amount_and_operation_type_after_withdrawal() {
+    void return_statement_with_balance_and_withdrawal_amount_and_operation_type_after_withdrawal() {
         Amount accountBalance = Amount.of(new BigDecimal(200));
         Amount expectedBalance = Amount.of(new BigDecimal(100));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
