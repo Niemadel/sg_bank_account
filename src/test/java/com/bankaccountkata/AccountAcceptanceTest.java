@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AccountAcceptanceTest {
 
     @Test
-    void print_statement_with_two_operation_on_account() {
+    void return_statement_with_two_operation_lines_after_withdrawal_and_deposit_on_account() {
         LocalDateTime dateOfOperation1 = LocalDateTime.of(2019, 10, 16, 17, 39);
         LocalDateTime dateOfOperation2 = LocalDateTime.of(2019, 11, 18, 14, 32);
 

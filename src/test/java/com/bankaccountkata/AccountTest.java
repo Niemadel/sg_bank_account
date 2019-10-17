@@ -13,7 +13,7 @@ public class AccountTest {
     LocalDateTime dateOfOperation = LocalDateTime.of(2019, 10, 16, 17, 39);
 
     @Test
-    void deposit_of_100_on_account_return_balance_of_100_on_account_with_balance_of_0() {
+    void deposit_of_100_on_account_return_balance_of_100_on_account_with_initial_balance_of_0() {
         Amount expectedBalance = Amount.of(new BigDecimal(100));
         Amount accountBalance = Amount.of(new BigDecimal(0));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
@@ -26,7 +26,7 @@ public class AccountTest {
     }
 
     @Test
-    void deposit_of_100_on_account_return_balance_of_0_on_account_with_balance_of_minus_100() {
+    void deposit_of_100_on_account_return_balance_of_0_on_account_with_initial_balance_of_minus_100() {
         Amount expectedBalance = Amount.of(new BigDecimal(0));
         Amount accountBalance = Amount.of(new BigDecimal(-100));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
@@ -39,7 +39,7 @@ public class AccountTest {
     }
 
     @Test
-    void withdrawal_of_100_on_account_substract_100_on_account_with_initial_balance_of_200() {
+    void withdrawal_of_100_on_account_return_balance_of_100_on_account_with_initial_balance_of_200() {
         Amount expectedBalance = Amount.of(new BigDecimal(100));
         Amount accountBalance = Amount.of(new BigDecimal(200));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
@@ -52,7 +52,7 @@ public class AccountTest {
     }
 
     @Test
-    void withdrawal_of_100_on_account_substract_100_on_account_with_balance_of_0() {
+    void withdrawal_of_100_on_account_return_balance_of_minus_100_on_account_with_initial_balance_of_0() {
         Amount expectedBalance = Amount.of(new BigDecimal(-100));
         Amount accountBalance = Amount.of(new BigDecimal(0));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
@@ -65,25 +65,24 @@ public class AccountTest {
     }
 
     @Test
-    void return_statement_with_balance_and_deposit_amount_and_operation_type_after_deposit() {
+    void return_statement_with_balance_and_deposit_amount_and_operation_type_and_date_after_deposit() {
         Amount accountBalance = Amount.of(new BigDecimal(0));
         Amount expectedBalance = Amount.of(new BigDecimal(100));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());
         Account account = new Account(accountBalance, initialAccountStatement);
         Amount depositAmount = Amount.of(new BigDecimal(100));
 
-        LocalDateTime date = LocalDateTime.of(2019, 10, 16, 17, 39);
-        OperationLine expectedOperationLine = new OperationLine(OperationType.DEPOSIT, expectedBalance, depositAmount, date);
+        OperationLine expectedOperationLine = new OperationLine(OperationType.DEPOSIT, expectedBalance, depositAmount, dateOfOperation);
         AccountStatement expectedStatement = new AccountStatement(new ArrayList<>());
         expectedStatement.add(expectedOperationLine);
 
-        account.deposit(depositAmount, date);
+        account.deposit(depositAmount, dateOfOperation);
 
         assertThat(account.accountStatement).isEqualTo(expectedStatement);
     }
 
     @Test
-    void return_statement_with_balance_and_withdrawal_amount_and_operation_type_after_withdrawal() {
+    void return_statement_with_balance_and_withdrawal_amount_and_operation_type_and_date_after_withdrawal() {
         Amount accountBalance = Amount.of(new BigDecimal(200));
         Amount expectedBalance = Amount.of(new BigDecimal(100));
         AccountStatement initialAccountStatement = new AccountStatement(new ArrayList<>());

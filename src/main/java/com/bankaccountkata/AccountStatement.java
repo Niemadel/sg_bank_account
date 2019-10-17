@@ -7,11 +7,11 @@ public class AccountStatement {
 
     private List<OperationLine> operationLines;
 
-    AccountStatement(List<OperationLine> operationLines) {
+    public AccountStatement(List<OperationLine> operationLines) {
         this.operationLines = operationLines;
     }
 
-    void add(OperationLine operationLine) {
+    public void add(OperationLine operationLine) {
         operationLines.add(operationLine);
     }
 
